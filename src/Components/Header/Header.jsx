@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { MdOutlineEnergySavingsLeaf } from "react-icons/md";
@@ -41,13 +40,21 @@ export default function Navbar() {
         }
     };
 
+    // Silliq skroll funksiyasi
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+        setIsOpen(false); // Mobil menyuni yopish
+    };
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsLanguageDropdownOpen(false);
             }
         };
-
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
@@ -56,74 +63,74 @@ export default function Navbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
-            }
+            setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
         <nav
-            className={`fixed top-0 w-full z-10 transition-colors duration-300 ${isScrolled
-                    ? "bg-white/10 backdrop-blur-md"
+            className={`fixed top-0 w-full z-50 transition-colors duration-300 ${isScrolled
+                    ? "bg-white/10 backdrop-blur-md shadow-md"
                     : darkMode
                         ? "bg-gray-900"
                         : "bg-orange-500"
                 }`}
         >
-            <div className="container mx-auto flex items-center justify-between p-1.5">
-                <Link href="/">
-                    <img src="/logo.png" alt="IFLY Tours" className="h-15" />
-                </Link>
-                <div className="hidden md:flex space-x-4">
-                    <Link
-                        href="/tours"
-                        className="hover:text-yellow-100 text-[17px] lg:text-[22px] text-white font-semibold"
-                    >
-                        {headerContent.navbar_1}
-                    </Link>
-                    <Link
-                        href="/visa"
-                        className="hover:text-yellow-100 text-[17px] lg:text-[22px] text-white font-semibold"
-                    >
-                        {headerContent.navbar_2}
-                    </Link>
-                    <Link
-                        href="/about"
-                        className="hover:text-yellow-100 text-[17px] lg:text-[22px] text-white font-semibold"
-                    >
-                        {headerContent.navbar_3}
-                    </Link>
-                    <Link
-                        href="/contact"
-                        className="hover:text-yellow-100 text-[17px] lg:text-[22px] text-white font-semibold"
-                    >
-                        {headerContent.navbar_4}
-                    </Link>
+            <div className="container mx-auto flex items-center justify-between px-4 py-2">
+                <a href="#" className="flex items-center" onClick={() => scrollToSection("home")}>
+                    <img src="/logo.png" alt="IFLY Tours" className="h-12" />
+                </a>
+
+                {/* Desktop Navigation */}
+                <div className="hidden md:flex items-center space-x-6">
+                    {[
+                        { href: "tours", label: headerContent.navbar_1 },
+                        { href: "visa", label: headerContent.navbar_2 },
+                        { href: "about", label: headerContent.navbar_3 },
+                        { href: "contact", label: headerContent.navbar_4 },
+                    ].map((item) => (
+                        <a
+                            key={item.href}
+                            href={`#${item.href}`}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                scrollToSection(item.href);
+                            }}
+                            className="text-white text-[18px] lg:text-[20px] font-semibold hover:text-yellow-200 transition-colors duration-200"
+                        >
+                            {item.label}
+                        </a>
+                    ))}
                 </div>
-                <div className="flex items-center space-x-5 sm:space-x-6 md:space-x-1.5 lg:space-x-4">
-                    <div
-                        className={`hidden md:flex text-[22px] space-x-1 lg:space-x-4 ${darkMode ? "text-gray-300" : "text-white"
-                            }`}
-                    >
-                        <FaFacebookF />
-                        <FaTwitter />
-                        <FaInstagram />
-                        <FaLinkedinIn />
-                        <FaYoutube />
+
+                {/* Right Section: Social Icons, Language, Dark Mode, Mobile Menu Button */}
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                    {/* Social Icons */}
+                    <div className="hidden md:flex items-center space-x-3 text-[20px] text-white">
+                        <a href="#" className="hover:text-yellow-200 transition-colors">
+                            <FaFacebookF />
+                        </a>
+                        <a href="#" className="hover:text-yellow-200 transition-colors">
+                            <FaTwitter />
+                        </a>
+                        <a href="#" className="hover:text-yellow-200 transition-colors">
+                            <FaInstagram />
+                        </a>
+                        <a href="#" className="hover:text-yellow-200 transition-colors">
+                            <FaLinkedinIn />
+                        </a>
+                        <a href="#" className="hover:text-yellow-200 transition-colors">
+                            <FaYoutube />
+                        </a>
                     </div>
+
+                    {/* Language Dropdown */}
                     <div className="relative" ref={dropdownRef}>
                         <button
                             onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-                            className={`flex items-center space-x-2 py-2 px-3 text-sm font-bold rounded-lg transition-colors ${darkMode
-                                    ? "bg-gray-900 text-white"
-                                    : "bg-orange-500 text-white"
+                            className={`flex items-center space-x-2 px-3 py-1.5 text-sm font-semibold rounded-md transition-colors ${darkMode ? "bg-gray-800 text-white" : "bg-orange-600 text-white"
                                 }`}
                         >
                             <Image
@@ -131,25 +138,24 @@ export default function Navbar() {
                                 alt={selectedLanguage.label}
                                 width={20}
                                 height={20}
-                                className="w-4 h-4"
+                                className="w-5 h-5 rounded-full"
                             />
                             <span>{selectedLanguage.label}</span>
                         </button>
-
                         {isLanguageDropdownOpen && (
-                            <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-20">
+                            <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg z-20 overflow-hidden">
                                 {languages.map((language) => (
                                     <button
                                         key={language.value}
                                         onClick={() => handleLanguageChange(language.value)}
-                                        className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:rounded-2xl"
+                                        className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-orange-100 transition-colors"
                                     >
                                         <Image
                                             src={language.flag}
                                             alt={language.label}
                                             width={20}
                                             height={20}
-                                            className="w-4 h-4"
+                                            className="w-5 h-5 rounded-full"
                                         />
                                         <span>{language.label}</span>
                                     </button>
@@ -158,123 +164,101 @@ export default function Navbar() {
                         )}
                     </div>
 
+                    {/* Dark Mode Toggle */}
                     <button
                         onClick={toggleDarkMode}
-                        className={`p-2 rounded-[5px] ${darkMode
-                                ? "bg-gray-900 hover:bg-gray-800"
-                                : "bg-white hover:bg-gray-100"
+                        className={`p-2 rounded-md transition-colors ${darkMode ? "bg-gray-800 text-yellow-400" : "bg-white text-orange-600"
                             }`}
                     >
-                        <MdOutlineEnergySavingsLeaf
-                            className={`text-[#F97316] ${darkMode ? "text-yellow-400" : ""}`}
-                        />
+                        <MdOutlineEnergySavingsLeaf size={20} />
                     </button>
+
+                    {/* Mobile Menu Button */}
                     <button
-                        className={`md:hidden p-2 rounded-[5px] ${darkMode
-                                ? "bg-gray-900 text-white"
-                                : "bg-white text-[#F97316]"
-                            }`}
+                        className="md:hidden p-2 rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-colors"
                         onClick={() => setIsOpen(!isOpen)}
                     >
-                        {isOpen ? <X size={16} /> : <Menu size={16} />}
+                        {isOpen ? <X size={20} /> : <Menu size={20} />}
                     </button>
                 </div>
             </div>
+
+            {/* Mobile Menu */}
             {isOpen && (
                 <div
-                    className={`md:hidden w-full sm:w-[70%] h-screen fixed top-0 right-0 ${darkMode ? "bg-gray-900" : "bg-orange-600"
-                        } text-white shadow-2xl p-6 transition-transform duration-300 transform ${isOpen ? "translate-x-0" : "translate-x-full"
-                        }`}
+                    className={`md:hidden fixed top-0 right-0 w-full sm:w-3/4 h-screen ${darkMode ? "bg-gray-900" : "bg-orange-600"
+                        } text-white p-6 transition-transform duration-300 transform ${isOpen ? "translate-x-0" : "translate-x-full"
+                        } z-40 shadow-2xl`}
                 >
                     <div className="flex justify-between items-center mb-8">
-                        <Link href="/" onClick={() => setIsOpen(false)}>
+                        <a href="#" onClick={() => scrollToSection("home")}>
                             <img src="/logo.png" alt="IFLY Tours" className="h-12" />
-                        </Link>
+                        </a>
                         <button
-                            className={`p-2 rounded-full ${darkMode ? "bg-gray-800 text-white" : "bg-white text-orange-600"
-                                }`}
+                            className="p-2 rounded-md bg-orange-700 text-white hover:bg-orange-800"
                             onClick={() => setIsOpen(false)}
                         >
                             <X size={24} />
                         </button>
                     </div>
+
                     <div className="flex flex-col space-y-4 text-[18px] font-semibold">
-                        <Link
-                            href="/tours"
-                            className={`py-3 px-4 rounded-xl ${darkMode
-                                    ? "bg-gray-800 hover:bg-gray-700"
-                                    : "bg-orange-500 hover:bg-orange-700"
-                                } transition-colors duration-200`}
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {headerContent.navbar_1}
-                        </Link>
-                        <Link
-                            href="/visa"
-                            className={`py-3 px-4 rounded-xl ${darkMode
-                                    ? "bg-gray-800 hover:bg-gray-700"
-                                    : "bg-orange-500 hover:bg-orange-700"
-                                } transition-colors duration-200`}
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {headerContent.navbar_2}
-                        </Link>
-                        <Link
-                            href="/about"
-                            className={`py-3 px-4 rounded-xl ${darkMode
-                                    ? "bg-gray-800 hover:bg-gray-700"
-                                    : "bg-orange-500 hover:bg-orange-700"
-                                } transition-colors duration-200`}
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {headerContent.navbar_3}
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className={`py-3 px-4 rounded-xl ${darkMode
-                                    ? "bg-gray-800 hover:bg-gray-700"
-                                    : "bg-orange-500 hover:bg-orange-700"
-                                } transition-colors duration-200`}
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {headerContent.navbar_4}
-                        </Link>
+                        {[
+                            { href: "tours", label: headerContent.navbar_1 },
+                            { href: "visa", label: headerContent.navbar_2 },
+                            { href: "about", label: headerContent.navbar_3 },
+                            { href: "contact", label: headerContent.navbar_4 },
+                        ].map((item) => (
+                            <a
+                                key={item.href}
+                                href={`#${item.href}`}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    scrollToSection(item.href);
+                                }}
+                                className={`py-3 px-4 rounded-lg ${darkMode ? "bg-gray-800 hover:bg-gray-700" : "bg-orange-500 hover:bg-orange-700"
+                                    } transition-colors duration-200`}
+                            >
+                                {item.label}
+                            </a>
+                        ))}
                     </div>
-                    <div className="mt-8 flex justify-center space-x-4">
+
+                    <div className="mt-8 flex justify-center space-x-4 text-[20px]">
                         <a
                             href="#"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-200"
-                                }`}
+                                } transition-colors`}
                         >
-                            <FaFacebookF size={20} />
+                            <FaFacebookF />
                         </a>
                         <a
                             href="#"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-200"
-                                }`}
+                                } transition-colors`}
                         >
-                            <FaTwitter size={20} />
+                            <FaTwitter />
                         </a>
                         <a
                             href="#"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-200"
-                                }`}
+                                } transition-colors`}
                         >
-                            <FaInstagram size={20} />
+                            <FaInstagram />
                         </a>
                         <a
                             href="#"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-200"
-                                }`}
+                                } transition-colors`}
                         >
-                            <FaLinkedinIn size={20} />
+                            <FaLinkedinIn />
                         </a>
                         <a
                             href="#"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-200"
-                                }`}
+                                } transition-colors`}
                         >
-                            <FaYoutube size={20} />
+                            <FaYoutube />
                         </a>
                     </div>
                 </div>

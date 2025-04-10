@@ -52,10 +52,10 @@ export default function SwiperCarousel() {
                                     : "bg-black/40 text-white"
                                 }`} // darkMode'ga qarab fon rangi
                         >
-                            <h2 className="text-[80px] font-bold drop-shadow-md">
+                            <h2 className="text-[40px] sm:text-[60px] font-bold drop-shadow-md">
                                 {slide.title}
                             </h2>
-                            <p className="mt-3 text-[30px] drop-shadow-md">
+                            <p className="mt-3 text-[25px] sm:text-[35px] drop-shadow-md">
                                 {slide.desc}
                             </p>
                         </div>
