@@ -1,0 +1,54 @@
+{
+    "BigTitle": "Explore Countries",
+    "Tours": [
+        {
+            "id": 1,
+            "image": "/slider_1.jpg",
+            "title": "Discover China",
+            "desc": "China: ancient history, the Great Wall, innovations, and a vibrant culture.",
+            "buttonText": "Contact us"
+        },
+        {
+            "id": 2,
+            "image": "/slider_2.jpg",
+            "title": "Island Getaway",
+            "desc": "Feel peace and tranquility amidst scenic island views, surrounded by natural beauty.",
+            "buttonText": "Contact us"
+        },
+        {
+            "id": 3,
+            "image": "/slider_3.jpg",
+            "title": "Japan",
+            "desc": "A fascinating country of modern life, deep-rooted ancient traditions, rich culture, and breathtaking innovations.",
+            "buttonText": "Contact us"
+        },
+        {
+            "id": 4,
+            "image": "/slider_4.jpg",
+            "title": "Discover Dubai",
+            "desc": "Experience the pinnacle of luxury, cutting-edge innovation, and thrilling adventures in the heart of the UAE.",
+            "buttonText": "Contact us"
+        },
+        {
+            "id": 5,
+            "image": "/slider_5.jpg",
+            "title": "Entertainment City",
+            "desc": "Dive into the world's entertainment capital and discover thrilling experiences.",
+            "buttonText": "Contact us"
+        },
+        {
+            "id": 6,
+            "image": "/slider_6.jpg",
+            "title": "Tropical Thailand",
+            "desc": "Relax on beautiful beaches, taste delicious food, and enjoy unforgettable moments.",
+            "buttonText": "Contact us"
+        },
+        {
+            "id": 7,
+            "image": "/slider_7.jpg",
+            "title": "Magical Turkey",
+            "desc": "Explore Turkey's rich history and stunning landscapes.",
+            "buttonText": "Contact us"
+        }
+    ]
+}

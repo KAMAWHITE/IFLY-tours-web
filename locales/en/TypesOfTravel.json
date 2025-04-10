@@ -1,0 +1,16 @@
+{
+    "items": [
+        {
+            "title": "Amazing Beach",
+            "text": "Discover modern beaches and relax in the sun."
+        },
+        {
+            "title": "Mountain Adventures",
+            "text": "Embark on an exciting mountain trip and explore nature."
+        },
+        {
+            "title": "City Tours",
+            "text": "Wander among entertainment parks, beautiful skyscrapers."
+        }
+    ]
+}

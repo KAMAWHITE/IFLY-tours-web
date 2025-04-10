@@ -1,0 +1,34 @@
+{
+    "BigTitle": "Бронирование авиабилетов",
+    "fullname": "Полное имя:",
+    "number_1": "Первый номер:",
+    "number_2": "Второй номер:",
+    "from": "Из какой страны:",
+    "to": "В какую страну:",
+    "from_when": "Дата вылета:",
+    "to_when": "Дата возвращения:",
+    "email": "Электронная почта:",
+    "telegram": "Имя пользователя Telegram:",
+    "send": "Отправить",
+    "placeholders": {
+        "fullName": "Введите ваше имя",
+        "phone1": "Первый номер",
+        "phone2": "Второй номер",
+        "email": "Ваш email",
+        "telegram": "Имя в Telegram"
+    },
+    "Selector": {
+        "default": "Выберите...",
+        "countries": {
+            "vietnam": "Вьетнам",
+            "tailand": "Таиланд",
+            "uzbekistan": "Узбекистан",
+            "southernkorea": "Южная Корея",
+            "philippin": "Филиппины",
+            "italy": "Италия",
+            "china": "Китай",
+            "japan": "Япония",
+            "russia": "Россия"
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "BigTitle": "Flight Ticket Booking",
+    "fullname": "Full Name:",
+    "number_1": "Primary Phone Number:",
+    "number_2": "Secondary Phone Number:",
+    "from": "From Country:",
+    "to": "To Country:",
+    "from_when": "Departure Date:",
+    "to_when": "Return Date:",
+    "email": "Email:",
+    "telegram": "Telegram Username:",
+    "send": "Send",
+    "placeholders": {
+        "fullName": "Enter your full name",
+        "phone1": "Primary number",
+        "phone2": "Secondary number",
+        "email": "Your email address",
+        "telegram": "Telegram username"
+    },
+    "Selector": {
+        "default": "Select...",
+        "countries": {
+            "vietnam": "Vietnam",
+            "tailand": "Thailand",
+            "uzbekistan": "Uzbekistan",
+            "southernkorea": "South Korea",
+            "philippin": "Philippines",
+            "italy": "Italy",
+            "china": "China",
+            "japan": "Japan",
+            "russia": "Russia"
+        }
+    }
+}

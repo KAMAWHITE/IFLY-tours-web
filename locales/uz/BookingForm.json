@@ -1,0 +1,34 @@
+{
+    "BigTitle": "Aviabiletlar bron qilish",
+    "fullname": "To'liq ismingiz:",
+    "number_1": "Birinchi raqamingiz:",
+    "number_2": "Ikkinchi raqamingiz:",
+    "from": "Qaysi davlatdan:",
+    "to": "Qaysi davlatga:",
+    "from_when": "Jo'nash sanasi:",
+    "to_when": "Qaytish sanasi:",
+    "email": "Email:",
+    "telegram": "Telegram Foydalanuvchi nomi:",
+    "send": "Yuborish",
+    "placeholders": {
+        "fullName": "Ismingizni kiriting",
+        "phone1": "Birinchi raqam",
+        "phone2": "Ikkinchi raqam",
+        "email": "Email manzilingiz",
+        "telegram": "Telegram nomi"
+    },
+    "Selector": {
+        "default": "Tanlang...",
+        "countries": {
+            "vietnam": "Vyetnam",
+            "tailand": "Taylant",
+            "uzbekistan": "O'zbekiston",
+            "southernkorea": "Janubiy Koreya",
+            "philippin": "Filippin",
+            "italy": "Italiya",
+            "china": "Xitoy",
+            "japan": "Yaponiya",
+            "russia": "Rassiya"
+        }
+    }
+}

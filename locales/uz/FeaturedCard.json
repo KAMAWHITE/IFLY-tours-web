@@ -1,0 +1,28 @@
+{
+    "features": [
+        { 
+            "icon": "airplane", 
+            "title": "Xalqaro Sayohat", 
+            "description": "Dunyodagi eng go‘zal joylarga sayohatlarni tashkil etamiz.",
+            "iconColor": "text-blue-600"
+        },
+        { 
+            "icon": "hotel", 
+            "title": "Qulay Mehmonxonalar", 
+            "description": "Eng yaxshi va eng qulay mehmonxonalar bilan qolaoq.",
+            "iconColor": "text-green-500"
+        },
+        { 
+            "icon": "directions", 
+            "title": "Maxsus Yo‘nalishlar", 
+            "description": "Har bir mijoz uchun individual yo‘nalishlarni yaratamiz.",
+            "iconColor": "text-yellow-500"
+        },
+        { 
+            "icon": "people", 
+            "title": "Malakali Yo‘riqchilar", 
+            "description": "Har bir mijoz uchun individual yo‘nalishlarni yaratamiz.",
+            "iconColor": "text-violet-500"
+        }
+    ]
+}

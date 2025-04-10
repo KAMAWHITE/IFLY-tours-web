@@ -1,0 +1,41 @@
+import React from "react";
+import Image from "next/image";
+
+const CompanyHistory = ({ logo, title, text, link, darkMode }) => {
+    return (
+        <div
+            className={`rounded-xl p-4 shadow-md flex items-center ${darkMode ? "bg-gray-700 text-white" : "bg-white text-black"
+                }`} // darkMode'ga qarab fon va matn rangi
+        >
+            <Image
+                src={logo}
+                alt="Company Logo"
+                width={160}
+                height={160}
+                className="mr-4"
+            />
+            <div>
+                <h3
+                    className={`text-[15px] font-bold mb-2 ${darkMode ? "text-orange-400" : "text-[#6366F1]"
+                        }`} // darkMode'ga qarab sarlavha rangi
+                >
+                    {title}
+                </h3>
+                <p className={darkMode ? "text-gray-300" : "text-gray-700"}> {/* darkMode'ga qarab matn rangi */}
+                    {text}
+                </p>
+                <a
+                    href={link}
+                    className={`${darkMode
+                            ? "text-orange-400 hover:text-orange-600"
+                            : "text-[#6366F1] hover:text-blue-700"
+                        }`} // darkMode'ga qarab link rangi
+                >
+                    {link}
+                </a>
+            </div>
+        </div>
+    );
+};
+
+export default CompanyHistory;

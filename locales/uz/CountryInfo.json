@@ -1,0 +1,54 @@
+{
+    "BigTitle": "Davlatlarni o'rganing",
+    "Tours": [
+        {
+            "id": 1,
+            "image": "/slider_1.jpg",
+            "title": "Xitoyni kashf eting",
+            "desc": "Xitoy: qadimiy tarix, Buyuk devor, innovatsiyalar, rang-barang madaniyat.",
+            "buttonText": "Biz bilan bog'laning"
+        },
+        {
+            "id": 2,
+            "image": "/slider_2.jpg",
+            "title": "Oroldagi dam olish",
+            "desc": "Ajoyib orol manzaralarida tinchlik va xotirjamlikni his qiling, tabiatning go‘zalligi bilan o‘ralgan holda.",
+            "buttonText": "Biz bilan bog'laning"
+        },
+        {
+            "id": 3,
+            "image": "/slider_3.jpg",
+            "title": "Yaponiya",
+            "desc": "Zamonaviy hayot, qadimiy an'analar va boy madaniyat mamlakati.",
+            "buttonText": "Biz bilan bog'laning"
+        },
+        {
+            "id": 4,
+            "image": "/slider_4.jpg",
+            "title": "Dubayni kashf eting",
+            "desc": "Birlashgan Arab Amirliklarida hashamat, innovatsiya va sarguzashtni kashf eting.",
+            "buttonText": "Biz bilan bog'laning"
+        },
+        {
+            "id": 5,
+            "image": "/slider_5.jpg",
+            "title": "Malakali shahar",
+            "desc": "Dunyoning ko'ngilochar poytaxtiga sho'ng'ing va hayajonli tajribalarni kashf eting.",
+            "buttonText": "Biz bilan bog'laning"
+        },
+        {
+            "id": 6,
+            "image": "/slider_6.jpg",
+            "title": "Tropik Tailand",
+            "desc": "Chiroyli plyajlarda dam oling, mazali taomlarni tatib ko'ring va unutilmas lahzalarni boshdan kechiring.",
+            "buttonText": "Biz bilan bog'laning"
+        },
+        {
+            "id": 7,
+            "image": "/slider_7.jpg",
+            "title": "Sehrli Turkiya",
+            "desc": "Turkiyaning boy tarixi va ajoyib manzaralarini kashf eting.",
+            "buttonText": "Biz bilan bog'laning"
+        }
+    ]
+}

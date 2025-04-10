@@ -1,0 +1,28 @@
+{
+    "features": [
+        {
+            "icon": "airplane",
+            "title": "International Travel",
+            "description": "We organize trips to the most beautiful places in the world.",
+            "iconColor": "text-blue-600"
+        },
+        {
+            "icon": "hotel",
+            "title": "Comfortable Hotels",
+            "description": "Stay in the best and most comfortable hotels.",
+            "iconColor": "text-green-500"
+        },
+        {
+            "icon": "directions",
+            "title": "Custom Routes",
+            "description": "We create personalized routes for each client.",
+            "iconColor": "text-yellow-500"
+        },
+        {
+            "icon": "people",
+            "title": "Qualified Guides",
+            "description": "We create personalized routes for each client.",
+            "iconColor": "text-violet-500"
+        }
+    ]
+}
