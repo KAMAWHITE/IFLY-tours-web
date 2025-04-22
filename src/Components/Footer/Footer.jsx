@@ -42,35 +42,35 @@ const Footer = () => {
                     </p>
                     <div className="flex space-x-4">
                         <a
-                            href="#"
+                            href="https://facebook.com/"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-300"
                                 }`} // darkMode'ga qarab ikonka rangi
                         >
                             <FaFacebook size={20} />
                         </a>
                         <a
-                            href="#"
+                            href="https://twitter.com/"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-300"
                                 }`}
                         >
                             <FaTwitter size={20} />
                         </a>
                         <a
-                            href="#"
+                            href="https://www.instagram.com/ifly.com.uz/"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-300"
                                 }`}
                         >
                             <FaInstagram size={20} />
                         </a>
                         <a
-                            href="#"
+                            href="https://linkedin.com/"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-300"
                                 }`}
                         >
                             <FaLinkedin size={20} />
                         </a>
                         <a
-                            href="#"
+                            href="https://youtube.com/"
                             className={`${darkMode ? "text-gray-300 hover:text-white" : "text-white hover:text-gray-300"
                                 }`}
                         >

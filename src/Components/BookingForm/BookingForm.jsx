@@ -36,17 +36,47 @@ const BookingForm = () => {
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [id]: value,
-        }));
+        // Telefon raqamlari uchun faqat raqamlarni qabul qilish
+        if (id === "phoneNumber1" || id === "phoneNumber2") {
+            const numericValue = value.replace(/[^0-9+]/g, ""); // Faqat raqamlar va "+" belgisini qoldiradi
+            setFormData((prev) => ({
+                ...prev,
+                [id]: numericValue,
+            }));
+        } else {
+            setFormData((prev) => ({
+                ...prev,
+                [id]: value,
+            }));
+        }
+    };
+
+    // Barcha maydonlar to'ldirilganligini tekshirish
+    const isFormValid = () => {
+        return (
+            formData.fullName.trim() !== "" &&
+            formData.phoneNumber1.trim() !== "" &&
+            formData.phoneNumber2.trim() !== "" &&
+            formData.fromCountry !== "" &&
+            formData.toCountry !== "" &&
+            formData.departureDate !== "" &&
+            formData.returnDate !== "" &&
+            formData.email.trim() !== "" &&
+            formData.telegramUsername.trim() !== ""
+        );
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || "7147216021:AAGMuN5Lt37qcPAY62u6eccBjVcDKwMK0nE"; // Use env variable
-        const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || "7317699848"; // Use env variable
+        // Agar barcha maydonlar to'ldirilmagan bo'lsa, xato xabarini ko'rsatamiz
+        if (!isFormValid()) {
+            alert(formContent.requiredFieldsMessage || "Iltimos, barcha maydonlarni to'ldiring!");
+            return;
+        }
+
+        const token = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN || "7147216021:AAGMuN5Lt37qcPAY62u6eccBjVcDKwMK0nE";
+        const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || "7317699848";
         const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
         try {
@@ -62,7 +92,7 @@ ${formContent.from_when}: ${formData.departureDate}
 ${formContent.to_when}: ${formData.returnDate}
 ${formContent.email}: ${formData.email}
 ${formContent.telegram}: ${formData.telegramUsername}
-        `,
+                `,
             });
 
             // Reset form on success
@@ -112,12 +142,13 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             id="fullName"
                             placeholder={formContent.placeholders.fullName}
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.fullName}
                             onChange={handleChange}
                             aria-label={formContent.fullname}
+                            required
                         />
                     </div>
 
@@ -134,12 +165,15 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             id="phoneNumber1"
                             placeholder={formContent.placeholders.phone1}
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.phoneNumber1}
                             onChange={handleChange}
+                            pattern="[0-9+]*"
+                            maxLength="12"
                             aria-label={formContent.number_1}
+                            required
                         />
                     </div>
 
@@ -156,12 +190,15 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             id="phoneNumber2"
                             placeholder={formContent.placeholders.phone2}
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.phoneNumber2}
                             onChange={handleChange}
+                            pattern="[0-9+]*"
+                            maxLength="12"
                             aria-label={formContent.number_2}
+                            required
                         />
                     </div>
 
@@ -176,12 +213,13 @@ ${formContent.telegram}: ${formData.telegramUsername}
                         <select
                             id="fromCountry"
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.fromCountry}
                             onChange={handleChange}
                             aria-label={formContent.from}
+                            required
                         >
                             <option value="">{formContent.Selector.default}</option>
                             {Object.entries(formContent.Selector.countries).map(
@@ -205,12 +243,13 @@ ${formContent.telegram}: ${formData.telegramUsername}
                         <select
                             id="toCountry"
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.toCountry}
                             onChange={handleChange}
                             aria-label={formContent.to}
+                            required
                         >
                             <option value="">{formContent.Selector.default}</option>
                             {Object.entries(formContent.Selector.countries).map(
@@ -235,12 +274,13 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             type="date"
                             id="departureDate"
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.departureDate}
                             onChange={handleChange}
                             aria-label={formContent.from_when}
+                            required
                         />
                     </div>
 
@@ -256,12 +296,13 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             type="date"
                             id="returnDate"
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.returnDate}
                             onChange={handleChange}
                             aria-label={formContent.to_when}
+                            required
                         />
                     </div>
 
@@ -278,12 +319,13 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             id="email"
                             placeholder={formContent.placeholders.email}
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.email}
                             onChange={handleChange}
                             aria-label={formContent.email}
+                            required
                         />
                     </div>
 
@@ -300,22 +342,24 @@ ${formContent.telegram}: ${formData.telegramUsername}
                             id="telegramUsername"
                             placeholder={formContent.placeholders.telegram}
                             className={`shadow appearance-none border rounded-[8px] w-full py-2 px-3 leading-tight focus:border-[3px] focus:outline-none focus:shadow-outline focus:border-orange-500 ${darkMode
-                                ? "bg-gray-700 text-white border-gray-600"
-                                : "bg-white text-gray-700 border-gray-300"
+                                    ? "bg-gray-700 text-white border-gray-600"
+                                    : "bg-white text-gray-700 border-gray-300"
                                 }`}
                             value={formData.telegramUsername}
                             onChange={handleChange}
                             aria-label={formContent.telegram}
+                            required
                         />
                     </div>
                 </div>
 
                 <button
                     className={`font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-6 w-full ${darkMode
-                        ? "bg-orange-600 hover:bg-orange-800 text-white"
-                        : "bg-orange-500 hover:bg-orange-700 text-white"
-                        }`}
+                            ? "bg-orange-600 hover:bg-orange-800 text-white"
+                            : "bg-orange-500 hover:bg-orange-700 text-white"
+                        } ${!isFormValid() ? "opacity-50 cursor-not-allowed" : ""}`}
                     type="submit"
+                    disabled={!isFormValid()}
                 >
                     {formContent.send}
                 </button>

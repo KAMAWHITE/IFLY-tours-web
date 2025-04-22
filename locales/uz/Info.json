@@ -1,0 +1,88 @@
+{
+    "Country_info": [
+        {
+            "id": 1,
+            "img": "/slider_1.jpg",
+            "title": "Xitoyni kashf eting",
+            "text": "Xitoy: qadimiy tarix, Buyuk devor, innovatsiyalar, rang-barang madaniyat.",
+            "aholi": "Aholi: 1.425 milliard",
+            "hudud": "Hududlar: 23 maxsus hudud",
+            "shaxarlar": "Shaharlar: Çongçing, Pekin, Pekin",
+            "valyuta": "Valyuta: Yuang (CNY)",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        },
+        {
+            "id": 2,
+            "img": "/slider_2.jpg",
+            "title": "Orol qochishi",
+            "text": "Orollar tinch dam olish joylari bo'lib, dengiz, qum va sokinlikdan bahramand bo'lishingiz mumkin.",
+            "aholi": "Aholi: 500,000",
+            "hudud": "Hududlar: Turli orollar",
+            "shaxarlar": "Shaharlar: Asosiy orol shahri, Plyaj shahri",
+            "valyuta": "Valyuta: Orol Dollari (ID)",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        },
+        {
+            "id": 3,
+            "img": "/slider_3.jpg",
+            "title": "Tokio, Yaponiya",
+            "text": "Tokio madaniyat, ovqat, texnologiya va tarixning ajoyib kombinatsiyasini taklif etadi.",
+            "aholi": "Aholi: 37.4 million",
+            "hudud": "Hududlar: 23 maxsus hudud",
+            "shaxarlar": "Shaharlar: Tokio, Yokohama, Chiba",
+            "valyuta": "Valyuta: Yapon Yenasi (JPY)",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        },
+        {
+            "id": 4,
+            "img": "/slider_4.jpg",
+            "title": "Dubay, BAA",
+            "text": "Dubay cheksiz xarid qilish, dunyo darajasidagi kurortlar va ajoyib me'morchilikni taklif etadi.",
+            "aholi": "Aholi: 3.3 million",
+            "hudud": "Hududlar: Bir nechta hudud va tumanlar",
+            "shaxarlar": "Shaharlar: Dubay, Abu-Dabi",
+            "valyuta": "Shaharlar: Dubay, Abu-Dabi",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        },
+        {
+            "id": 5,
+            "img": "/slider_5.jpg",
+            "title": "Maldivlar",
+            "text": "Los-Anjeles rang-barang madaniyat va Gollivud belgilari kabi mashhur joylarni taklif etadi.",
+            "aholi": "Aholi: 3.9 million",
+            "hudud": "Hududlar: Markaziy, Gollivud, Santa Monika",
+            "shaxarlar": "Shaharlar: Los-Anjeles, Santa Monika, Beverly Xillz",
+            "valyuta": "Valyuta: AQSH Dollari (USD)",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        },
+        {
+            "id": 6,
+            "img": "/slider_6.jpg",
+            "title": "Tropik Tailand",
+            "text": "Chiroyli plyajlarda dam oling",
+            "aholi": "Aholi: 69.8 million",
+            "hudud": "Hududlar: 76 viloyat",
+            "shaxarlar": "Shaharlar: Bangkok, Chiang Mai, Phuket",
+            "valyuta": "Valyuta: Tailand Bat (THB)",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        },
+        {
+            "id": 7,
+            "img": "/slider_7.jpg",
+            "title": "Mo'jizaviy Turkiya",
+            "text": "Mo'jizaviy Turkiya",
+            "aholi": "Aholi: 84 million",
+            "hudud": "Hududlar: 81 viloyat",
+            "shaxarlar": "Hududlar: 81 viloyat",
+            "valyuta": "Hududlar: 81 viloyat",
+            "btn1": "Yopish",
+            "btn2": "Aloqa"
+        }
+    ]
+}

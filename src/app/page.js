@@ -16,13 +16,9 @@ const Page = () => {
         <PremiumTours />
       </div>
       <div id="visa">
-        <section className="py-16 text-center">
-          <h2 className="text-3xl font-bold">Visa Services</h2>
-          <p>This section is under development.</p>
-        </section>
+        <CountryInfo />
       </div>
       <div id="about">
-        <CountryInfo />
         <AboutUs />
       </div>
       <div id="contact">
