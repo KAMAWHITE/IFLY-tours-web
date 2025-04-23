@@ -20,7 +20,6 @@ const BookingForm = () => {
         telegramUsername: "",
     });
 
-    // Get form content based on current language
     const getFormContent = () => {
         switch (til) {
             case "ru":
@@ -36,9 +35,8 @@ const BookingForm = () => {
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        // Telefon raqamlari uchun faqat raqamlarni qabul qilish
         if (id === "phoneNumber1" || id === "phoneNumber2") {
-            const numericValue = value.replace(/[^0-9+]/g, ""); // Faqat raqamlar va "+" belgisini qoldiradi
+            const numericValue = value.replace(/[^0-9+]/g, "");
             setFormData((prev) => ({
                 ...prev,
                 [id]: numericValue,
@@ -51,7 +49,6 @@ const BookingForm = () => {
         }
     };
 
-    // Barcha maydonlar to'ldirilganligini tekshirish
     const isFormValid = () => {
         return (
             formData.fullName.trim() !== "" &&
@@ -69,7 +66,6 @@ const BookingForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Agar barcha maydonlar to'ldirilmagan bo'lsa, xato xabarini ko'rsatamiz
         if (!isFormValid()) {
             alert(formContent.requiredFieldsMessage || "Iltimos, barcha maydonlarni to'ldiring!");
             return;
@@ -95,7 +91,6 @@ ${formContent.telegram}: ${formData.telegramUsername}
                 `,
             });
 
-            // Reset form on success
             setFormData({
                 fullName: "",
                 phoneNumber1: "",

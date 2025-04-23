@@ -1,13 +1,12 @@
 "use client";
-import { useApp } from "../../app/LanguageContext"; // useApp hookini import qilamiz
+import { useApp } from "../../app/LanguageContext";
 import TypesOfTravelUz from "../../../locales/uz/TypesOfTravel.json";
 import TypesOfTravelRu from "../../../locales/ru/TypesOfTravel.json";
 import TypesOfTravelEn from "../../../locales/en/TypesOfTravel.json";
 
 const TypesOfTravel = () => {
-    const { til, darkMode } = useApp(); // til va darkMode'ni olish
+    const { til, darkMode } = useApp();
 
-    // JSON fayllar strukturasi tekshiruvi
     const getTravelData = () => {
         try {
             switch (til) {
@@ -26,11 +25,14 @@ const TypesOfTravel = () => {
 
     const travelItems = getTravelData();
 
-    // Agar ma'lumotlar bo'sh bo'lsa
     if (!travelItems || travelItems.length === 0) {
         return (
             <div className="w-full mx-auto py-10 text-center">
-                <p>Ma'lumotlar yuklanmoqda...</p>
+                <p>{til === "ru"
+                    ? "Данные загружаются..."
+                    : til === "en"
+                        ? "Data is loading..."
+                        : "Ma'lumotlar yuklanmoqda..."}</p>
             </div>
         );
     }
@@ -42,16 +44,16 @@ const TypesOfTravel = () => {
                     <div
                         key={index}
                         className={`p-5 shadow-2xl rounded-2xl ${darkMode
-                                ? "bg-gray-800 border-gray-600 text-white"
-                                : "bg-white border-gray-700 text-black"
-                            }`} // darkMode'ga qarab stil
+                            ? "bg-gray-800 border-gray-600 text-white"
+                            : "bg-white border-gray-700 text-black"
+                            }`}
                     >
                         <h1 className="text-[20px] font-bold">
                             {item.title || "Sarlavha mavjud emas"}
                         </h1>
                         <p
                             className={`text-[15px] font-semibold pt-3 ${darkMode ? "text-gray-300" : "text-[#A1A1AA]"
-                                }`} // darkMode'ga qarab matn rangi
+                                }`}
                         >
                             {item.text || "Tavsif mavjud emas"}
                         </p>

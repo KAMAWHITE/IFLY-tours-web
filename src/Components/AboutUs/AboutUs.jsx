@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useApp } from "../../app/LanguageContext"; // useApp hookini import qilamiz
+import { useApp } from "../../app/LanguageContext";
 import AboutUsUz from "../../../locales/uz/AboutUs.json";
 import AboutUsRu from "../../../locales/ru/AboutUs.json";
 import AboutUsEn from "../../../locales/en/AboutUs.json";
@@ -25,7 +25,7 @@ import TestimonialRu from "../../../locales/ru/Testimonials.json";
 import TestimonialEn from "../../../locales/en/Testimonials.json";
 
 const AboutUs = () => {
-    const { til, darkMode } = useApp(); // til va darkMode'ni olish
+    const { til, darkMode } = useApp();
 
     React.useEffect(() => {
         AOS.init({
@@ -35,7 +35,6 @@ const AboutUs = () => {
         });
     }, []);
 
-    // Get content based on current language
     const getContent = (contentType) => {
         try {
             switch (til) {
@@ -74,20 +73,20 @@ const AboutUs = () => {
 
     return (
         <div
-            className={`py-12 ${darkMode ? "dark bg-gray-800" : "bg-orange-500"}`} // darkMode'ga qarab fon
+            className={`py-12 ${darkMode ? "dark bg-gray-800" : "bg-orange-500"}`}
         >
             <div className="container mx-auto px-4">
                 <section className="mb-8 text-center">
                     <h2
                         data-aos="fade-up"
                         className={`text-3xl font-bold mb-2 ${darkMode ? "text-white" : "text-white"
-                            }`} // darkMode'da matn oq bo'lib qoladi
+                            }`} 
                     >
                         {aboutUsContent?.title || "Biz haqimizda"}
                     </h2>
                     <p
                         data-aos="fade-up"
-                        className={darkMode ? "text-gray-300" : "text-white"} // darkMode'ga qarab matn rangi
+                        className={darkMode ? "text-gray-300" : "text-white"}
                     >
                         {aboutUsContent?.text || ""}
                     </p>
@@ -109,8 +108,8 @@ const AboutUs = () => {
                                         darkMode
                                             ? "text-orange-400"
                                             : feature.iconColor || "text-orange-500"
-                                    } // darkMode'ga qarab ikonka rangi
-                                    darkMode={darkMode} // darkMode'ni props sifatida uzatamiz
+                                    }
+                                    darkMode={darkMode}
                                 />
                             </div>
                         ))}
@@ -124,7 +123,7 @@ const AboutUs = () => {
                             title={companyHistory?.title || ""}
                             text={companyHistory?.text || ""}
                             link={companyHistory?.link || "#"}
-                            darkMode={darkMode} // darkMode'ni props sifatida uzatamiz
+                            darkMode={darkMode}
                         />
                     </div>
                 </section>
@@ -132,7 +131,7 @@ const AboutUs = () => {
                 <section data-aos="fade-up" data-aos-duration="1500">
                     <h2
                         className={`text-2xl font-bold mb-10 text-center ${darkMode ? "text-white" : "text-white"
-                            }`} // darkMode'da matn oq bo'lib qoladi
+                            }`}
                     >
                         {aboutUsContent?.topswiper || "Mijozlarimiz fikrlari"}
                     </h2>
@@ -160,7 +159,7 @@ const AboutUs = () => {
                                 <Testimonial
                                     quote={testimonial.quote}
                                     author={testimonial.author}
-                                    darkMode={darkMode} // darkMode'ni props sifatida uzatamiz
+                                    darkMode={darkMode}
                                 />
                             </SwiperSlide>
                         ))}

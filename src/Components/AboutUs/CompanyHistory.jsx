@@ -16,11 +16,11 @@ const CompanyHistory = ({ logo, title, text, link, darkMode }) => {
             <div>
                 <h3
                     className={`text-[15px] font-bold mb-2 ${darkMode ? "text-orange-400" : "text-[#6366F1]"
-                        }`} // darkMode'ga qarab sarlavha rangi
+                        }`}
                 >
                     {title}
                 </h3>
-                <p className={darkMode ? "text-gray-300" : "text-gray-700"}> {/* darkMode'ga qarab matn rangi */}
+                <p className={darkMode ? "text-gray-300" : "text-gray-700"}>
                     {text}
                 </p>
                 <a
@@ -28,7 +28,7 @@ const CompanyHistory = ({ logo, title, text, link, darkMode }) => {
                     className={`${darkMode
                         ? "text-orange-400 hover:text-orange-600"
                         : "text-[#6366F1] hover:text-blue-700"
-                        }`} // darkMode'ga qarab link rangi
+                        }`}
                 >
                     {link}
                 </a>

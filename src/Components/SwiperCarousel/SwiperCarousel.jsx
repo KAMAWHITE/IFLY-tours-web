@@ -5,13 +5,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import React from "react";
-import { useApp } from "../../app/LanguageContext"; // AppContext'dan useApp import qilamiz
+import { useApp } from "../../app/LanguageContext";
 import SwiperCarouselUz from "../../../locales/uz/SwiperCarousel.json";
 import SwiperCarouselRu from "../../../locales/ru/SwiperCarousel.json";
 import SwiperCarouselEn from "../../../locales/en/SwiperCarousel.json";
 
 export default function SwiperCarousel() {
-    const { til, darkMode } = useApp(); // til va darkMode'ni olish
+    const { til, darkMode } = useApp();
 
     const getContent = () => {
         switch (til) {
@@ -35,7 +35,7 @@ export default function SwiperCarousel() {
                 navigation
                 loop={true}
                 className={`w-full h-[500px] sm:h-[600px] md:h-[700px] ${darkMode ? "dark" : ""
-                    }`} // darkMode'ga qarab class qo'shish
+                    }`}
             >
                 {slides.map((slide) => (
                     <SwiperSlide key={slide.id} className="relative w-full h-full">
@@ -50,7 +50,7 @@ export default function SwiperCarousel() {
                             className={`absolute inset-0 flex flex-col items-center justify-center text-center px-6 ${darkMode
                                     ? "bg-black/60 text-white"
                                     : "bg-black/40 text-white"
-                                }`} // darkMode'ga qarab fon rangi
+                                }`}
                         >
                             <h2 className="text-[40px] sm:text-[60px] font-bold drop-shadow-md">
                                 {slide.title}

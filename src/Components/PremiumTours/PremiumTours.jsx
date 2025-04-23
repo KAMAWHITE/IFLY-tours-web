@@ -17,11 +17,9 @@ const PremiumTours = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedTour, setSelectedTour] = useState(null);
 
-    // Telegram bot ma'lumotlari
     const token = "7147216021:AAGMuN5Lt37qcPAY62u6eccBjVcDKwMK0nE";
     const chatId = "7317699848";
 
-    // Get tours data based on current language
     const getToursData = () => {
         try {
             switch (til) {
@@ -38,7 +36,6 @@ const PremiumTours = () => {
         }
     };
 
-    // Get title based on current language
     const getTitle = () => {
         switch (til) {
             case "ru":
@@ -50,7 +47,6 @@ const PremiumTours = () => {
         }
     };
 
-    // Modal uchun sarlavha va matnni tilga qarab olish
     const getModalContent = () => {
         switch (til) {
             case "ru":
@@ -100,18 +96,14 @@ const PremiumTours = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Forma ma'lumotlarini yig'ish
         const formData = new FormData(e.target);
         const name = formData.get("name");
         const email = formData.get("email");
         const subject = formData.get("subject");
         const message = formData.get("message");
-
-        // Telegram botiga yuboriladigan xabar
         const text = `Yangi xabar:\nIsm: ${name}\nEmail: ${email}\nMavzu: ${subject}\nXabar: ${message}`;
 
         try {
-            // Telegram API'ga so'rov yuborish
             const response = await fetch(
                 `https://api.telegram.org/bot${token}/sendMessage`,
                 {
@@ -134,8 +126,6 @@ const PremiumTours = () => {
         } catch (error) {
             console.error("Telegram botiga xabar yuborishda xato:", error);
         }
-
-        // Modalni yopish
         closeModal();
     };
 
@@ -185,8 +175,8 @@ const PremiumTours = () => {
                                     />
                                     <div
                                         className={`absolute bottom-0 left-0 w-full p-4 text-white ${darkMode
-                                                ? "bg-gradient-to-t from-black/70 to-transparent"
-                                                : "bg-gradient-to-t from-black/60 to-transparent"
+                                            ? "bg-gradient-to-t from-black/70 to-transparent"
+                                            : "bg-gradient-to-t from-black/60 to-transparent"
                                             }`}
                                     >
                                         <h3 className="text-xl font-semibold mb-2">
@@ -196,8 +186,8 @@ const PremiumTours = () => {
                                         <button
                                             onClick={() => openModal(tour)}
                                             className={`inline-block py-2 px-4 rounded-full text-sm font-medium ${darkMode
-                                                    ? "bg-orange-600 hover:bg-orange-800 text-white"
-                                                    : "bg-orange-500 hover:bg-orange-700 text-white"
+                                                ? "bg-orange-600 hover:bg-orange-800 text-white"
+                                                : "bg-orange-500 hover:bg-orange-700 text-white"
                                                 }`}
                                             aria-label={`Batafsil ma'lumot olish uchun ${tour.title}`}
                                         >
@@ -210,12 +200,15 @@ const PremiumTours = () => {
                     </Swiper>
                 ) : (
                     <p className={`text-center ${darkMode ? "text-gray-300" : "text-white"}`}>
-                        Turlar yuklanmoqda...
+                        {til === "ru"
+                            ? "Данные загружаются..."
+                            : til === "en"
+                                ? "Data is loading..."
+                                : "Ma'lumotlar yuklanmoqda..."}
                     </p>
                 )}
             </div>
 
-            {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div

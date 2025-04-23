@@ -24,7 +24,6 @@ const CountryInfo = () => {
         });
     }, []);
 
-    // Get country data based on current language
     const getCountryData = () => {
         try {
             switch (til) {
@@ -41,7 +40,6 @@ const CountryInfo = () => {
         }
     };
 
-    // Get title based on current language
     const getTitle = () => {
         switch (til) {
             case "ru":
@@ -53,7 +51,6 @@ const CountryInfo = () => {
         }
     };
 
-    // Modal uchun ma'lumotlarni faqat Info JSON fayllardan olish
     const getModalContent = (country) => {
         let modalData = {};
         try {
@@ -73,7 +70,7 @@ const CountryInfo = () => {
         }
 
         return {
-            img: modalData.img || "/placeholder.jpg", // Agar img topilmasa, standart rasm
+            img: modalData.img || "/placeholder.jpg",
             title: modalData.title || "Noma'lum",
             desc: modalData.text || "Ma'lumot topilmadi",
             population: modalData.aholi || "Noma'lum",
@@ -131,8 +128,8 @@ const CountryInfo = () => {
                             </div>
                             <div
                                 className={`p-4 ${darkMode
-                                        ? "bg-gray-800 text-white"
-                                        : "bg-gradient-to-r from-orange-400 to-pink-500 text-white"
+                                    ? "bg-gray-800 text-white"
+                                    : "bg-gradient-to-r from-orange-400 to-pink-500 text-white"
                                     }`}
                             >
                                 <h3 className="text-xl font-semibold mb-2">{country.title}</h3>
@@ -140,8 +137,8 @@ const CountryInfo = () => {
                                 <button
                                     onClick={() => openModal(country)}
                                     className={`py-2 px-4 rounded-full inline-block font-semibold ${darkMode
-                                            ? "bg-orange-600 text-white"
-                                            : "bg-white text-black"
+                                        ? "bg-orange-600 text-white"
+                                        : "bg-white text-black"
                                         }`}
                                     aria-label={`Batafsil ma'lumot olish uchun ${country.title}`}
                                 >
@@ -155,12 +152,15 @@ const CountryInfo = () => {
                         className={`text-center col-span-3 ${darkMode ? "text-gray-300" : "text-gray-300"
                             }`}
                     >
-                        Ma'lumotlar yuklanmoqda...
+                        {til === "ru"
+                            ? "Данные загружаются..."
+                            : til === "en"
+                                ? "Data is loading..."
+                                : "Ma'lumotlar yuklanmoqda..."}
                     </p>
                 )}
             </div>
 
-            {/* Modal */}
             {isModalOpen && selectedCountry && (
                 <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div

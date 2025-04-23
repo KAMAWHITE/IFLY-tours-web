@@ -9,19 +9,11 @@ import HeaderUz from "../../../locales/uz/Header.json";
 import HeaderRu from "../../../locales/ru/Header.json";
 import HeaderEn from "../../../locales/en/Header.json";
 
-// TypeScript uchun interfeys (agar ishlatilsa)
-// interface AppContextType {
-//     til: string;
-//     changeLanguage: (lang: string) => void;
-//     darkMode: boolean;
-//     toggleDarkMode: () => void;
-// }
-
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
-    const { til, changeLanguage, darkMode, toggleDarkMode } = useApp(); // TypeScript uchun: as AppContextType
+    const { til, changeLanguage, darkMode, toggleDarkMode } = useApp();
     const dropdownRef = useRef(null);
 
     const languages = [
@@ -48,16 +40,14 @@ export default function Navbar() {
         }
     };
 
-    // Silliq skroll funksiyasi
     const scrollToSection = (sectionId) => {
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
         }
-        setIsOpen(false); // Mobil menyuni yopish
+        setIsOpen(false);
     };
 
-    // Birlashtirilgan useEffect
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
@@ -103,7 +93,6 @@ export default function Navbar() {
                     />
                 </a>
 
-                {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-6">
                     {[
                         { href: "tours", label: headerContent.navbar_1 },
@@ -125,9 +114,7 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                {/* Right Section: Social Icons, Language, Dark Mode, Mobile Menu Button */}
                 <div className="flex items-center space-x-3 sm:space-x-4">
-                    {/* Social Icons */}
                     <div className="hidden md:flex items-center space-x-3 text-[20px] text-white">
                         <a
                             href="https://facebook.com/iflytours"
@@ -166,7 +153,6 @@ export default function Navbar() {
                         </a>
                     </div>
 
-                    {/* Language Dropdown */}
                     <div className="relative" ref={dropdownRef}>
                         <button
                             onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
@@ -208,7 +194,6 @@ export default function Navbar() {
                         )}
                     </div>
 
-                    {/* Dark Mode Toggle */}
                     <button
                         onClick={toggleDarkMode}
                         aria-label={darkMode ? "Yorqin rejimga o'tish" : "Qorong'i rejimga o'tish"}
@@ -218,7 +203,6 @@ export default function Navbar() {
                         <MdOutlineEnergySavingsLeaf size={20} />
                     </button>
 
-                    {/* Mobile Menu Button */}
                     <button
                         className="md:hidden p-2 rounded-md text-white bg-orange-600 hover:bg-orange-700 transition-colors"
                         onClick={() => setIsOpen(!isOpen)}
@@ -229,7 +213,6 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
             {isOpen && (
                 <div
                     className={`md:hidden fixed top-0 right-0 w-full h-screen ${darkMode ? "bg-gray-900" : "bg-orange-600"
